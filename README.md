@@ -168,6 +168,15 @@ EventsApi api = new ApiClient("API KEY", "API-SECRET")
                 .createService(EventsApi.class);
 ```
 
+By default, the Java SDK will upload to the [US1 Data Center URL](https://docs.mparticle.com/developers/server/http/#endpoint).  If the API key you're sending to exists in an mParticle Data Center that's not US1, you can add the following configuration to the SDK initialization:
+
+```java
+Retrofit.Builder mybuilder = new Retrofit.Builder().baseUrl("DATA CENTER URL").build();
+EventsApi api = new ApiClient("API KEY", "API-SECRET")
+                .setAdapterBuilder(mybuilder)
+                .createService(EventsApi.class);
+```
+
 > The mParticle Events API leverages HTTP basic authentication over TLS. 
 
 ### Perform a Synchronous Upload
